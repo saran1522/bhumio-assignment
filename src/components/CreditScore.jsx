@@ -22,6 +22,7 @@ function CreditScore() {
             name="creditScore"
             min="300"
             max="850"
+            value={minFico}
             onChange={handleFicoChange}
             className="w-full border rounded-full border-gray-400 cursor-pointer appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[10px] [&::-webkit-slider-thumb]:w-[20px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary-400"
           />
