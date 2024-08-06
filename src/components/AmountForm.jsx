@@ -40,6 +40,7 @@ function AmountForm() {
           placeholder="House Price"
           value={housePrice}
           onChange={handleHousePriceChange}
+          sign={"$"}
         />
       </div>
       <div className="flex flex-col items-start justify-center">
@@ -50,12 +51,14 @@ function AmountForm() {
             placeholder="Interest Rate"
             value={interest}
             onChange={handleLoanChanges}
+            sign={"%"}
           />
           <AmountInput
             name="downPayment"
             placeholder="Down Payment"
             value={downPayment}
             onChange={handleLoanChanges}
+            sign={"$"}
           />
         </div>
       </div>
