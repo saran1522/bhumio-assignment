@@ -4,6 +4,7 @@ import { rateData } from "../config/sampleData";
 const HouseDataContext = createContext();
 
 export function HouseDataProvider({ children }) {
+  // const { ratesData, loading, error } = useRates();
   const { data: chartValues, request: rateParams } = rateData;
   const [currLoanType, setCurrLoanType] = useState(rateParams.loan_type);
   const [currRate, setCurrRate] = useState(rateParams.rate_structure);
@@ -49,10 +50,10 @@ export function HouseDataProvider({ children }) {
     console.log("updated min fico", e.target.value);
   }
 
-  // function handleMaxFicoChange(e) {
-  //   setMaxFico(e.target.value);
-  //   console.log("updated max fico", e.target.value);
-  // }
+  function handleMaxFicoChange(e) {
+    setMaxFico(e.target.value);
+    console.log("updated max fico", e.target.value);
+  }
 
   function handleDownPaymentChange(amount) {
     setDownPayment(amount);
@@ -88,6 +89,7 @@ export function HouseDataProvider({ children }) {
         interest,
         handleHousePriceChange,
         handleStateChange,
+        handleMaxFicoChange,
         handleFicoChange,
         handleDownPaymentChange,
         handleInterestChange,

@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import React from "react";
-import SelectData from "./FilterBoxContainer";
+import FilterBoxContainer from "./FilterBoxContainer";
 import CreditScore from "./CreditScore";
-import Price from "./AmountForm";
-import State from "./SelectState";
+import AmountForm from "./AmountForm";
+import SelectState from "./SelectState";
 
 function RateOptionsBox() {
   return (
@@ -22,9 +22,9 @@ function RateOptionsBox() {
       }}
     >
       <CreditScore />
-      <State />
-      <Price />
-      <SelectData />
+      <SelectState />
+      <AmountForm />
+      <FilterBoxContainer />
     </Box>
   );
 }

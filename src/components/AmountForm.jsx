@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Wrapper from "./Wrapper";
 import { useHouseData } from "../Context/HouseDataContext";
+import AmountInput from "./AmountInput";
 
 function AmountForm() {
   const {
@@ -15,12 +16,15 @@ function AmountForm() {
   } = useHouseData();
 
   function handleLoanChanges(e) {
-    if (e.target.name === "interest") {
+    if (e.target.name === "interest" && e.target.value <= 100) {
       handleInterestChange(e.target.value);
       const dp = housePrice * (e.target.value / 100);
       handleDownPaymentChange(dp);
       handleLoanAmountChange(housePrice - dp);
-    } else if (e.target.name === "downPayment") {
+    } else if (
+      e.target.name === "downPayment" &&
+      e.target.value <= housePrice
+    ) {
       handleDownPaymentChange(e.target.value);
       handleInterestChange((e.target.value / housePrice) * 100);
       handleLoanAmountChange(housePrice - e.target.value);
@@ -29,41 +33,29 @@ function AmountForm() {
 
   return (
     <Wrapper>
-      <div className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-start justify-center w-[300px]">
         <label htmlFor="">House Price</label>
-        <input
-          type="text"
+        <AmountInput
           name="housePrice"
           placeholder="House Price"
-          value={`${housePrice} $`}
+          value={housePrice}
           onChange={handleHousePriceChange}
-          className="w-[300px] p-2 border border-gray-300 bg-transparent rounded-lg"
         />
       </div>
       <div className="flex flex-col items-start justify-center">
-        <label htmlFor="">Down Payment</label>
+        <label htmlFor="downPayment">Down Payment</label>
         <div className="w-[300px] p-2 border border-gray-300 rounded-lg flex gap-1">
-          <input
-            type="text"
+          <AmountInput
             name="interest"
             placeholder="Interest Rate"
-            value={`${interest} %`}
-            onChange={(e) => {
-              if (e.target.value > 100) return;
-              handleLoanChanges(e);
-            }}
-            className="flex-1 border w-1/2 rounded-lg p-2 bg-transparent border-gray-300"
+            value={interest}
+            onChange={handleLoanChanges}
           />
-          <input
-            type="text"
+          <AmountInput
             name="downPayment"
-            placeholder="Amount"
-            value={`${downPayment} $`}
-            onChange={(e) => {
-              if (housePrice < e.target.value) return;
-              handleLoanChanges(e);
-            }}
-            className="flex-1 border w-1/2 rounded-lg p-2 bg-transparent border-gray-300"
+            placeholder="Down Payment"
+            value={downPayment}
+            onChange={handleLoanChanges}
           />
         </div>
       </div>
