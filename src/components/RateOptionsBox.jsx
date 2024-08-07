@@ -4,6 +4,7 @@ import FilterBoxContainer from "./FilterBoxContainer";
 import CreditScore from "./CreditScore";
 import AmountForm from "./AmountForm";
 import SelectState from "./SelectState";
+import SelectColor from "./SelectColor";
 
 function RateOptionsBox() {
   return (
@@ -21,6 +22,7 @@ function RateOptionsBox() {
         borderRadius: "10px",
       }}
     >
+      <SelectColor />
       <CreditScore />
       <SelectState />
       <AmountForm />

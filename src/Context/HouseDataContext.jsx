@@ -18,6 +18,22 @@ export function HouseDataProvider({ children }) {
     rateParams.price - rateParams.loan_amount
   );
   const [interest, setInterest] = useState((downPayment / housePrice) * 100);
+  const [currColor, setCurrColor] = useState("#94d2bd");
+
+  const interestRates = Object.keys(chartValues);
+  const lenders = Object.values(chartValues);
+
+  const chartData = {
+    labels: interestRates,
+    datasets: [
+      {
+        data: lenders,
+        label: "hlerlweo",
+        backgroundColor: currColor,
+        hoverBackgroundColor: "#07beb8",
+      },
+    ],
+  };
 
   function handleLoanTypeChange(e) {
     setCurrLoanType(e.target.value);
@@ -69,10 +85,16 @@ export function HouseDataProvider({ children }) {
     setLoanAmount(amount);
     console.log("updated loan amount", amount);
   }
+
+  function handleColorChange(e) {
+    setCurrColor(e.target.value);
+    console.log("updated color", e.target.value);
+  }
+
   return (
     <HouseDataContext.Provider
       value={{
-        chartValues,
+        chartData,
         rateParams,
         currLoanType,
         currRate,
@@ -87,6 +109,7 @@ export function HouseDataProvider({ children }) {
         maxFico,
         downPayment,
         interest,
+        currColor,
         handleHousePriceChange,
         handleStateChange,
         handleMaxFicoChange,
@@ -94,6 +117,7 @@ export function HouseDataProvider({ children }) {
         handleDownPaymentChange,
         handleInterestChange,
         handleLoanAmountChange,
+        handleColorChange,
       }}
     >
       {children}

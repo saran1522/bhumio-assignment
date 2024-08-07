@@ -4,11 +4,10 @@ import { useRef } from "react";
 
 export const BarChart = ({ chartData }) => {
   const chartRef = useRef(null);
-
   const saveCanvas = () => {
     const canvasSave = chartRef.current.canvas;
     canvasSave.toBlob(function (blob) {
-      saveAs(blob, "testing.png");
+      saveAs(blob, "home_price_chart.png");
     });
   };
   return (
@@ -22,6 +21,7 @@ export const BarChart = ({ chartData }) => {
       <div className="flex justify-center items-center h-full">
         <Bar
           className="h-[400px] rounded-lg p-4"
+          id="barChart"
           data={chartData}
           ref={chartRef}
           options={{

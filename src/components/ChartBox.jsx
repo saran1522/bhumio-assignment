@@ -2,12 +2,13 @@ import { Box } from "@mui/material";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import React from "react";
-import { chartData } from "../config/ChartData";
 import { BarChart } from "./BarChart";
+import { useHouseData } from "../Context/HouseDataContext";
 
 Chart.register(CategoryScale);
 
 function ChartBox() {
+  const { currColor, chartData } = useHouseData();
   return (
     <Box
       height={500}

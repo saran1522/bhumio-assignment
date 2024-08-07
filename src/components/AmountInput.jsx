@@ -9,7 +9,7 @@ function AmountInput({ name, placeholder, value, onChange, sign }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="flex-1 rounded-lg p-2 bg-transparent w-4/5"
+        className="flex-1 rounded-lg p-2 bg-transparent w-4/5 outline-none"
       />
       <span className="w-1/5">{sign}</span>
     </div>
